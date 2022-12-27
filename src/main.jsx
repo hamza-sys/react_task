@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AuthContext } from "./authContext";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import SnackBar from "./components/SnackBar";
@@ -22,7 +22,8 @@ function renderRoutes(role) {
     default:
       return (
         <Routes>
-          <Route exact path="/" element={<AdminLoginPage />}></Route>
+          {/* <Route path="/" element={<AdminLoginPage />}></Route> */}
+          <Route exact path="/admin/login" element={<AdminLoginPage />}></Route>
           <Route path="*" exact element={<NotFoundPage />}></Route>
         </Routes>
       );
@@ -32,6 +33,14 @@ function renderRoutes(role) {
 
 function Main() {
   const { state } = React.useContext(AuthContext);
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (state.isAuthenticated) {
+      navigate('/admin/dashboard')
+    }
+  }, [])
 
   return (
     <div className="h-full">

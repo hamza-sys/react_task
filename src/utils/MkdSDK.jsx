@@ -121,6 +121,7 @@ export default function MkdSDK() {
         body: JSON.stringify({role})
       })
       const data = res.data
+      console.log(data)
       return data;
     } catch (err) {
        console.error(err.message)

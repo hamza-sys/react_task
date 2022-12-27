@@ -3,6 +3,8 @@ import MkdSDK from "../utils/MkdSDK";
 import { AuthContext } from "../authContext";
 import { useNavigate } from "react-router-dom";
 import Videos from "../components/Videos";
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
 
 function getDate() {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'August', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -111,8 +113,10 @@ const AdminDashboardPage = () => {
               <th>Author</th>
               <th>Most Liked</th>
             </tr>
-            </thead>
+          </thead>
+            <DndProvider backend={HTML5Backend}>
             <Videos videos={videos}/>
+            </DndProvider>
           </table> : ''}
          
 
