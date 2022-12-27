@@ -4,11 +4,11 @@ import { useDrop } from 'react-dnd'
 
 
 const Videos = ({ videos }) => {
-    const [{ isOver, draggingColor, canDrop }, drop] = useDrop(
+    const [{ isOver, canDrop }, drop] = useDrop(
     () => ({
       accept: 'tr',
-      drop(_item, monitor) {
-        return _item
+        drop(item) {
+        console.log(item.id)
       },
       collect: (monitor) => ({
         isOver: monitor.isOver(),

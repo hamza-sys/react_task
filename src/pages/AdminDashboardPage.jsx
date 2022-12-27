@@ -41,7 +41,7 @@ const AdminDashboardPage = () => {
 
   const logout = () => {
   dispatch({ type: 'LOGOUT' })
-  navigate('/')
+  navigate('/admin/login')
   }
 
   useEffect(() => {
