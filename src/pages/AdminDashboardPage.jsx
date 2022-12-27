@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import MkdSDK from "../utils/MkdSDK";
 import { AuthContext } from "../authContext";
 import { useNavigate } from "react-router-dom";
+import Videos from "../components/Videos";
 
 function getDate() {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'August', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -103,8 +104,7 @@ const AdminDashboardPage = () => {
           </div>
         </div>
 
-       
-          <table style={{width:'100%'}}  className='mt-4 my-0 p-4 table mx-auto'>
+        {!loading ?  <table style={{width:'100%'}}  className='mt-4 my-0 p-4 table mx-auto'>
             <thead className="mt-4">
             <tr className='text-xs'>
               <th className="text-left">Title</th>
@@ -112,20 +112,9 @@ const AdminDashboardPage = () => {
               <th>Most Liked</th>
             </tr>
             </thead>
-          <tbody>
-            {!videos && 'Loading Videos'}
-            {videos && videos.map(video => (
-              <tr key={video.id} className="border">
-                <td style={{width: '300px', maxWidth: '300px'}} className='flex items-center'>
-                  <img className='w-32 h-9'  src={video.photo} alt='' />
-                  <p>{video.title}</p>
-                </td>
-                <td style={{ color: '#9BFF00' }} className="text-center font-thin">{video.username}</td>
-                <td className="text-center">{video.like}</td>
-            </tr>
-            ))}
-            </tbody>
-          </table>
+            <Videos videos={videos}/>
+          </table> : ''}
+         
 
         {!loading ? <div className="buttons mt-4">
          {page !== 1 ? <button onClick={loadPrevVideos} style={{ backgroundColor: '#9BFF00' }} className="text-black px-6 font-thin rounded-full">Prev</button> : ''}

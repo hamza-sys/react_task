@@ -5,7 +5,7 @@ import SnackBar from "./components/SnackBar";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import { useEffect } from "react";
+
 
 function renderRoutes(role) {
   switch (role) {
